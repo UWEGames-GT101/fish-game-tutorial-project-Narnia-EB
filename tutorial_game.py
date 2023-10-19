@@ -136,12 +136,19 @@ class MyASGEGame(pyasge.ASGEGame):
             pass
 
     def render(self, game_time: pyasge.GameTime) -> None:
-        """
-        This is the variable time-step function. Use to update
-        animations and to render the gam    e-world. The use of
-        ``frame_time`` is essential to ensure consistent performance.
-        @param game_time: The tick and frame deltas.
-        """
+        self.data.renderer.render(self.data.background)
+
+        if self.menu:
+
+            self.data.renderer.render(self.menu_text)
+            self.data.renderer.render(self.play_option)
+            self.data.renderer.render(self.exit_option)
+
+        else:
+
+            self.data.renderer.render(self.fish)
+
+
 
         if self.menu:
             # render the menu here
